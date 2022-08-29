@@ -12,10 +12,9 @@ const pairs = (array, sum) => {
   return [];
 };
 
-let array1 = ['a', 'b', 'c', 'd'];
-let array2 = ['e', 'f', 'z', 'h', 'd'];
+let array1 = ['a', 'd', 'b', 'c', 'd'];
+let array2 = ['e', 'f', 'z', 'd', 'r'];
 
-// brute force linear way of solving problem
 const common = (arr1, arr2) => {
   for (let i = 0; i < arr1.length; i++) {
     for (let j = 0; j < arr2.length; j++) {
@@ -28,23 +27,41 @@ const common = (arr1, arr2) => {
 };
 
 const commonPattern = (arr1, arr2) => {
-  let output = {};
+  return arr1.some((item) => {
+    return arr2.includes(item);
+  });
+};
 
-  for (let i = 0; i < arr1.length; i++) {
-    if (!output[arr1[i]]) {
-      output[arr1[i]] = true;
-    }
-  }
+console.log(commonPattern(array1, array2));
 
-  console.log('output', output);
+let boys = ['Dan', 'Bav', 'Ryan', 'John', 'Sam'];
+let girls = ['Ellen', 'Jade', 'Lillie', 'Sarah'];
 
-  //  loop through the second array
-  for (let j = 0; j < arr2.length; j++) {
-    if (output[array2[j]]) {
+let people = {};
+
+boys.forEach((person) => {
+  people[person] = 'male';
+});
+
+console.log('people', people);
+
+girls.forEach((girl) => {
+  people[girl] = 'female';
+});
+
+console.log('people', people);
+
+// Hello - Hello - Hello - Hello - Hello - Hello - Hello - Hello
+
+const hasPairWithSum2 = (arr, sum) => {
+  const mySet = new Set();
+  for (let i = 0; i < arr.length; i++) {
+    if (mySet.has(arr[i])) {
       return true;
     }
+    mySet.add(sum - arr[i]);
   }
   return false;
 };
 
-console.log(commonPattern(array1, array2));
+console.log(hasPairWithSum2([6, 4, 3, 2, 1, 7], 9));
