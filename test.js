@@ -51,8 +51,6 @@ girls.forEach((girl) => {
 
 console.log('people', people);
 
-// Hello - Hello - Hello - Hello - Hello - Hello - Hello - Hello
-
 const hasPairWithSum2 = (arr, sum) => {
   const mySet = new Set();
   for (let i = 0; i < arr.length; i++) {
